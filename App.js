@@ -1,4 +1,5 @@
 import React from 'react';
+import { WebView } from 'react-native-webview';
 import {
   View,
   Text,
@@ -6,15 +7,26 @@ import {
   ScrollView,
   Image,
   Button,
+  ActivityIndicator,
+  
 } from 'react-native';
+// import MyWeb from './components/MyWeb';
+
 
 // import Box from './components/Box';
 
 class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.container}>
+        <WebView
+          source={{
+            uri: 'https://www.konexio.eu/index.html'
+          }}
+          style={{ height: 800 }}
+        />
+        <ActivityIndicator/>
+        <View>
           <Text style={styles.top}>
             I
           </Text>
@@ -24,7 +36,7 @@ class App extends React.Component {
           <Text style={styles.bot}>
             NUGGETS
           </Text>
-        </ScrollView>
+        </View>
         <Image source={require('./assets/konexio.png')} />
         <Image
         style={styles.konexio}
@@ -32,12 +44,15 @@ class App extends React.Component {
           uri: 'https://www.konexio.eu/uploads/1/2/0/2/120245745/konexio-logo_1.png',
         }}
       />
+      <Text style={styles.title}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </Text>
         <Button
         title="Press me"
         color="red"
-        onPress={() => Alert.alert('Button with adjusted color pressed')}
+        onPress={() => Alert.alert('Simple Button pressed')}
         />
-      </View>
+      </ScrollView>
     );
   }
 }
